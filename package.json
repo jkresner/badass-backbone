@@ -1,0 +1,35 @@
+{
+    "author": "Jonathon Kresner",
+    "name": "Badass Brunch",
+    "description": "Brunch app skeleton with Bootstrap + Backbone + Custom Backbone Classes",
+    "version": "0.0.1",
+    "homepage": "https://github.com/jkresner/badass-brunch",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:jkresner/badass-brunch.git"
+    },
+    "engines": {
+        "node": "~0.6.10 || 0.8 || 0.9"
+    },
+    "scripts": {
+        "start": "brunch watch --server",
+        "test": "brunch test"
+    },
+    "dependencies": {
+        "javascript-brunch": "> 1.0 < 1.5",
+        "coffee-script-brunch": "> 1.0 < 1.5",
+
+        "css-brunch": "> 1.0 < 1.5",
+
+        "handlebars-brunch": "> 1.0 < 1.5",
+
+        "uglify-js-brunch": "> 1.0 < 1.5",
+        "clean-css-brunch": "> 1.0 < 1.5",
+    },
+    "devDependencies": {
+        "mocha": "0.14.0",
+        "chai": "1.2.0",
+        "sinon": "1.4.2",
+        "sinon-chai": "2.1.2"
+    }
+}
