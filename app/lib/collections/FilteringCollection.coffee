@@ -56,7 +56,7 @@ class FilteringCollection extends Backbone.Collection
 # http://stackoverflow.com/questions/5636812/sorting-strings-in-reverse-order-with-backbone-js
 reverseString = (m, attr) ->
   if ! m.get(attr)? then return ''
-  String.fromCharCode.apply String, _.map(m.get(attr).split(""), (c) -> 0xffff - c.charCodeAt() )
+  String.fromCharCode.apply String, _.map( m.get(attr).split(""), (c) -> 0xffff - c.charCodeAt() )
 
 
 module.exports = FilteringCollection

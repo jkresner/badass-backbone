@@ -7,9 +7,7 @@ BB = require 'lib/badassbackbone'
 
 
 class ExampleCollection extends BB.FilteringCollection
-
-  # Filter logic is if character matches & number is greater than supplied num
-  _filter: (f) ->
+  _filter: (f) ->     # Filter logic matches character & number greater than supplied num
     r = @models
     if f?
       if f.char?
