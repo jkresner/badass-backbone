@@ -2,6 +2,23 @@
 
 Baddass Brunch is a [Brunch](http://brunch.io/) app skeleton that comes with Bootstrap + Backbone + CoffeeScript and some useful base Backbone classes with examples on how to use them.
 
+## Live demo
+
+The app and each of the examples can be viewed at:
+
+
+### http://airpair.us/badass-backbone
+
+
+## Getting started locally
+
+1. <b>Install Brunch Server:</b> sudo npm install brunch -g
+1. <b>Create App Locally:</b> brunch new <appname> --skeleton git@github.com:jkresner/badass-backbone-brunch.git
+3. <b>Get node modules needed by brunch:</b> npm install
+4. <b>Run brunch server in watch mode:</b> brunch watch -server
+5. <b>Open app</b> http://localhost:3333/
+
+
 ## Useful Backbone Base Classes
 
 - FilteringCollection
@@ -34,11 +51,6 @@ Baddass Brunch is a [Brunch](http://brunch.io/) app skeleton that comes with Boo
 - [Chai 1.2.0](https://github.com/chaijs/chai)
 - [Sinon 1.4.2](https://github.com/cjohansen/Sinon.JS)
 - [Sinon-Chai 2.1.2](https://github.com/domenic/sinon-chai)
-
-## Getting started
-
-    brunch new <appname> --skeleton git@github.com:jkresner/badass-brunch.git
-    brunch w -s
 
 
 ## Building in release mode

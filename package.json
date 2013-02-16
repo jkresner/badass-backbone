@@ -1,6 +1,6 @@
 {
     "author": "Jonathon Kresner",
-    "name": "Badass Brunch",
+    "name": "badass-backbone-brunch",
     "description": "Brunch app skeleton with Bootstrap + Backbone + Custom Backbone Classes",
     "version": "0.0.1",
     "homepage": "https://github.com/jkresner/badass-brunch",
@@ -24,7 +24,7 @@
         "handlebars-brunch": "> 1.0 < 1.5",
 
         "uglify-js-brunch": "> 1.0 < 1.5",
-        "clean-css-brunch": "> 1.0 < 1.5",
+        "clean-css-brunch": "> 1.0 < 1.5"
     },
     "devDependencies": {
         "mocha": "0.14.0",
