@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="/javascripts/vendor.js"></script>
+        <style type="text/css">
+            #pitch { width:300px;height:300px;border:solid 1px #d3d3d3;padding:20px;text-align:center; }
+        </style>
+    </head>
+
+    <body>
+
+      <div id="pitch">
+        <h3 class="name">About John & Jon</h3>
+        <h3 class="speaker">Jonathon Kresner</h3>
+        <p class="description">Two lost muhers in San Francisco learning backbonejs and a misty evening.</p>
+        <span class="rating">5</span> / 5
+      </div>
+
+      <div>
+        <br /><a href="javascript:jquery_way_renderNextPitch()">Next by jQuery</a>
+        <br /><a href="javascript:template_way_renderNextPitch()">Next by templates</a>
+        <br /><a href="javascript:backbone_way_renderNextPitch()">Next by backbone</a>
+      </div>
+
+        <script type="text/javascript">
+
+            function getNextPitch()
+            {
+                // somehow we know next pitch id
+                var nextId = 22;
+
+                // would make an make ajax call
+
+                result = {
+                    name: "How to quit OK Cupid",
+                    speaker: "John C Davison",
+                    description: "I don't think its actually possible",
+                    rating: "3"
+
+                };
+
+                return result
+            }
+
+            function jquery_way_renderNextPitch()
+            {
+                var data = getNextPitch();
+
+                $('.name').html(data.name);
+                $('.speaker').html(data.speaker);
+                $('.description').html(data.description);
+                $('.rating').html(data.rating);
+            }
+
+            function template_way_renderNextPitch()
+            {
+                var data = getNextPitch();
+
+                var renderedHtmlUsingData = getRenderedTemplateWithData(data);
+
+                $('#pitch').html(renderedHtmlUsingData);
+            }
+
+                function getRenderedTemplateWithData(data)
+                {
+                    return '<h3 class="name">'+data.name+'</h3>' +
+                           '<h3 class="speaker">'+data.speaker+'</h3>' +
+                           '<p class="description">'+data.description+'</p>' +
+                           '<span class="rating">'+data.rating+'</span> / 5';
+                }
+
+            function backbone_way_renderNextPitch()
+            {
+                window.pitch = new Backbone.Model();
+                var view = new PitchView({ model: pitch });
+
+                var data = getNextPitch();
+
+                pitch.set(data);  // fires change event
+                // view.render(); -- PUSH MODE INSTEAD OF PULL
+            }
+
+            var PitchView = Backbone.View.extend({
+                el: '#pitch',
+                initialize: function(args)
+                {
+                    this.model.on('change', this.render, this);
+                },
+                render: function()
+                {
+                    var data = this.model.toJSON();
+                    var renderedHtmlUsingData = getRenderedTemplateWithData(data);
+                    this.$el.html(renderedHtmlUsingData);
+                }
+            });
+
+        </script>
+
+    </body>
+
+</html>
