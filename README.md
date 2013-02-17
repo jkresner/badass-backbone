@@ -13,9 +13,9 @@ The app and each of the examples can be viewed at:
 ## Getting started locally
 
 1. <b>Install Brunch Server:</b> sudo npm install brunch -g
-1. <b>Create App Locally:</b> brunch new <appname> --skeleton git@github.com:jkresner/badass-backbone-brunch.git
+1. <b>Create App Locally:</b> brunch new {appname} --skeleton git@github.com:jkresner/badass-backbone-brunch.git
 3. <b>Get node modules needed by brunch:</b> npm install
-4. <b>Run brunch server in watch mode:</b> brunch watch -server
+4. <b>Run brunch server in watch mode:</b> brunch watch --server
 5. <b>Open app</b> http://localhost:3333/
 
 

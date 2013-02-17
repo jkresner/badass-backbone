@@ -1,0 +1,66 @@
+<h2>Default Brunch</h2>
+
+<ol>
+  <li>
+   Everything is /app is pre-built (.coffee, .sass etc.)
+  </li>
+  <li>
+    Html lives in /app/assets
+  </li>
+  <li>
+    brunch build (brunch watch) => sends files from app -> public
+    <br />public isn't in repo (like build folder)
+    <br />Execute url http://localhost:3333/ you're hitting public folder
+    <br />GOTCHA - DONT EDIT FILES IN PUBLIC
+  </li>
+  <li>
+    Generators are like scaffolds
+  </li>
+  <li>
+    Test folder is where your test scripts go.
+    <br />/test -> /public/test
+  </li>
+  <li>
+    To build in release mode (excluding tests)
+    "brunch b --config config-release.coffee"
+  </li>
+  <li>
+    Vendor is 3rd party css & jas (e.g. bootstrap, backbone, jquery)
+  </li>
+  <li>
+    Brunch takes all scripts (js) in vendor/scripts and combines it into
+    one single js files /public/javascripts/vendor.js
+  </li>
+  <li>
+    Brunch takes all scripts (js) everywhere else and combines it into
+    one single js files /public/javascripts/app.js
+  </li>
+  <li>
+    Brunch takes all css everywhere else and combines it into
+    one single js files /public/stylessheets/app.css
+  </li>
+</ol>
+
+<h2>Baddass Backbone Brunch</h2>
+
+<h3>/app directory structure</h3>
+
+<ol>
+  <li>  Everything inside of /assets is literally a photo-copy job into
+    /public
+
+  </li>
+
+  <li>
+    <b>demos</b> is where all the code for each single page app (SPA) lives
+  </li>
+
+  <li>
+    <b>libs</b> is where the badass backbone base classes live
+  </li>
+
+  <li>
+    <b>stubs</b> contain files with json data
+  </li>
+
+</ol>
