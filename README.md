@@ -7,7 +7,7 @@ Baddass Brunch is a [Brunch](http://brunch.io/) app skeleton that comes with Boo
 The app and each of the examples can be viewed at:
 
 
-### http://airpair.us/badass-backbone
+### http://airpair.us/index.us
 
 
 ## Getting started locally
