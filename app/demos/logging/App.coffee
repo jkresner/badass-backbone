@@ -10,18 +10,15 @@ routers = require './Routers'
 module.exports.Page = class Page
   constructor: (pageData) ->
 
-    @jsdevelopers = new collections.JSDevelopers()
-    #developers = new collections.Developers()
+    @teas = new collections.Teas()
+    @teasView = new views.TeasView collection: @jsdevelopers
 
-    @jsdevelopersView = new views.JSDevelopersView collection: @jsdevelopers
-    # @developersView = new views.DevelopersView collection: @jsdevelopers
-
-    @jsdevelopers.reset pageData.jsdevelopers
+    @teas.reset pageData.teas
 
 
 
 
-module.exports.Router = routers.DevelopersRouter
+module.exports.Router = routers.Router
 
 # LoadSPA allows us to initialize the app multiple times in integration tests
 # without needing to re-require this app.coffee file or wait for jQuery.ready()
