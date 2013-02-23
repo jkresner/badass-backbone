@@ -20,6 +20,10 @@ module.exports = class BadassView extends Backbone.View
 
   constructor: (args) ->
 
+    # allow us to autoSetConstructorArgs via instance constructor
+    if args? && args.autoSetConstructorArgs?
+      @autoSetConstructorArgs = args.autoSetConstructorArgs
+
     if @autoSetConstructorArgs
       for own attr, value of args
         @[attr] = value
@@ -48,6 +52,6 @@ module.exports = class BadassView extends Backbone.View
         fn.call @, args
 
     if @save?
-      @save = _.wrap @render, (fn, args) ->
+      @save = _.wrap @save, (fn, args) ->
         $log "#{@viewTypeName}.save", args
         fn.call @, args
