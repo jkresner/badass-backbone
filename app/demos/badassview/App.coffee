@@ -11,7 +11,7 @@ module.exports.Page = class Page
   constructor: (pageData) ->
 
     @teas = new collections.Teas()
-    @teasView = new views.TeasView collection: @jsdevelopers
+    @teasView = new views.TeasView collection: @teas
 
     @teas.reset pageData.teas
 

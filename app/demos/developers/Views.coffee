@@ -1,4 +1,4 @@
-BB = './../lib/badassbackbone'
+BB = require './../../lib/badassbackbone'
 tmpl_jsDevRow = require './templates/jsDevRow'
 tmpl_devRow = require './templates/devRow'
 
