@@ -42,16 +42,22 @@ module.exports = class BadassView extends Backbone.View
     @viewTypeName = @constructor.name
 
     if @initialize?
-      @initialize = _.wrap @initialize, (fn, args) ->
+      @initialize = _.wrap @initialize, (fn, args) =>
         $log "#{@viewTypeName}.init", args
         fn.call @, args
 
     if @render?
-      @render = _.wrap @render, (fn, args) ->
+      @render = _.wrap @render, (fn, args) =>
         $log "#{@viewTypeName}.render", "model", @model, "collection", @collection
         fn.call @, args
 
     if @save?
-      @save = _.wrap @save, (fn, args) ->
+      @save = _.wrap @save, (fn, args) =>
         $log "#{@viewTypeName}.save", args
         fn.call @, args
+
+  # Want to stop referring to elements by id
+  # Use name attribute instead
+  # + be strict about only looking inside the view's scope
+  elm: (attr) ->
+    @$("[name='#{attr}']")
