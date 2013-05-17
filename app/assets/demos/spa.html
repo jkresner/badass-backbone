@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Badass Backbone</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="author" content="Jonathon Kresnder">
+        <link rel="stylesheet" href="/stylesheets/app.css">
+    </head>
+
+    <body>
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+        <h3 class="muted">Badass Backbone.js</h3>
+      </div>
+
+      <hr>
+
+      <style type="text/css"> .route { display:none } </style>
+
+      <p>The class route is automatically hidden but shown when the route is active.</p>
+
+      <a href="#step1">step 1</a> >>
+      <a href="#step2">step 2</a> >>
+      <a href="#step3">step 3</a>
+
+      <br /><br />
+
+      <div id="step1" class="route">Step 1!</div>
+      <div id="step2" class="route">Step 2!!</div>
+      <div id="step3" class="route">Step 3!!!</div>
+
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>&copy; <a href="http://www.airpair.com" title="Pair programming, Code review, Software architecture advice & coder mentoring.">AirPair</a> 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+
+    </body>
+
+
+
+  <script type="text/javascript">
+    function initApp() {
+      var pageData = {};
+      Router = require('demos/spa/router');
+      window.router = new Router(pageData);
+    }
+  </script>
+  <script src="/javascripts/vendor.js" defer></script>
+  <script src="/javascripts/badass-backbone.js" defer></script>
+  <script src="/javascripts/app.js" defer onload="initApp()"></script>
+</html>

@@ -801,7 +801,7 @@ window.require.register("BB/views/ModelSaveView", function(exports, require, mod
   })(HasBootstrapErrorStateView);
 
 });
-window.require.register("badassbackbone", function(exports, require, module) {
+window.require.register("badass-backbone", function(exports, require, module) {
   module.exports = {
     BadassModel: require('./BB/models/BadassModel'),
     SublistModel: require('./BB/models/SublistModel'),
