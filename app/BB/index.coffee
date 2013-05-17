@@ -3,6 +3,7 @@ module.exports =
   # Smart Models
   BadassModel:                  require './models/BadassModel'
   SublistModel:                 require './models/SublistModel'
+  SessionModel:                 require './models/SessionModel'
 
   # Smart Collection
   FilteringCollection:          require './collections/FilteringCollection'
@@ -13,3 +14,6 @@ module.exports =
   HasErrorStateView:            require './views/HasErrorStateView'
   HasBootstrapErrorStateView:   require './views/HasBootstrapErrorStateView'
   ModelSaveView:                require './views/ModelSaveView'
+
+  BadassAppRouter:              require './routers/BadassAppRouter'
+  SessionRouter:                require './routers/SessionRouter'
