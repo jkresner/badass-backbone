@@ -1,28 +1,23 @@
 {
     "author": "Jonathon Kresner",
-    "name": "badass-backbone-brunch",
-    "description": "Brunch app skeleton with Bootstrap + Backbone + Custom Backbone Classes",
+    "name": "badass-backbone",
+    "description": "Minimalist abstract models, collections, views & controllers",
     "version": "0.0.1",
-    "homepage": "https://github.com/jkresner/badass-brunch",
+    "homepage": "https://github.com/jkresner/badass-backbone",
     "repository": {
         "type": "git",
-        "url": "git@github.com:jkresner/badass-brunch.git"
+        "url": "git@github.com:jkresner/badass-backbone.git"
     },
     "engines": {
         "node": "~0.6.10 || 0.8 || 0.9"
     },
     "scripts": {
-        "start": "brunch watch --server",
-        "test": "brunch test"
     },
     "dependencies": {
         "javascript-brunch": "> 1.0 < 1.5",
         "coffee-script-brunch": "> 1.0 < 1.5",
-
         "css-brunch": "> 1.0 < 1.5",
-
         "handlebars-brunch": "> 1.0 < 1.5",
-
         "uglify-js-brunch": "> 1.0 < 1.5",
         "clean-css-brunch": "> 1.0 < 1.5"
     },
