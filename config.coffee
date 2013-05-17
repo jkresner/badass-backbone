@@ -13,8 +13,9 @@ exports.config =
 
     javascripts:
       joinTo:
-       'javascripts/app.js': /^app/
        'javascripts/vendor.js': /^vendor/
+       'javascripts/app.js': /^app(\/|\\)(?!(BB|badassbackbone))/
+       'javascripts/badass-backbone.js': /^app(\/|\\)(?=(BB|badassbackbone))/
        'test/javascripts/test.js': /^test(\/|\\)(?!vendor)/
        'test/javascripts/test-vendor.js': /^test(\/|\\)(?=vendor)/
       order:
