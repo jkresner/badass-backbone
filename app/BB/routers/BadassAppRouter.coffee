@@ -9,7 +9,7 @@
   It also assumes that each route has an associated top level views
   which becomes visible when you hit that route and all other become hidden
 """
-module.exports = class BadassRouter extends Backbone.Router
+module.exports = class BadassAppRouter extends Backbone.Router
 
   # Set logging on /off - Very dandy during dev to see flow of routes
   logging: off
