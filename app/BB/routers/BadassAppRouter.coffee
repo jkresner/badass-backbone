@@ -1,5 +1,5 @@
 """
-  BadassRouter takes the philosophical position that only one router
+  BadassAppRouter takes the philosophical position that only one router
   can be used for one html page / single page app and it is the top most
   app container object other than window.
 
@@ -33,7 +33,7 @@ module.exports = class BadassAppRouter extends Backbone.Router
     @pageData = pageData if pageData?
 
     app = @appConstructor pageData, callback
-    @app = _.extend @app, app
+    @app = if @app? then _.extend @app, app else app
 
     if @logging
       $log 'BadassRouter.app', @app
@@ -86,6 +86,7 @@ module.exports = class BadassAppRouter extends Backbone.Router
           if @logging then $log "Router.#{fn.routeName}"
           $(".route").hide()
           $("##{fn.routeName}").show()
+          window.scrollTo 0, 0
           @routeMiddleware()
           fn.call @, args
 
@@ -112,8 +113,13 @@ module.exports = class BadassAppRouter extends Backbone.Router
   # setup the ajax links for the html5 push navigation
   enablePushStateNavigate:  ->
     $("body").on "click", "a", (e) =>
-      href = $(e.currentTarget).attr 'href'
+      $a = $(e.currentTarget)
+      href = $a.attr 'href'
+      # $log 'href', href, href.length, $a, $a.hasClass 'routeIgnore'
       if href.length && href.charAt(0) is '#'
+
+        # TODO: add ignore classes
+        # if ! $a.hasClass 'routeIgnore'
         e.preventDefault()
         @navTo href.replace('#','')
 
