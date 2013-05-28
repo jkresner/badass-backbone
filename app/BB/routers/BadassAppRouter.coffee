@@ -87,11 +87,11 @@ module.exports = class BadassAppRouter extends Backbone.Router
           $(".route").hide()
           $("##{fn.routeName}").show()
           window.scrollTo 0, 0
-          @routeMiddleware()
+          @routeMiddleware fn
           fn.call @, args
 
   # override routeMiddleware to execute custom code on every route
-  routeMiddleware: ->
+  routeMiddleware: (routeFn) ->
 
   # load external providers like google analytics, user-voice etc.
   loadExternalProviders: ->
