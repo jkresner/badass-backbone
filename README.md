@@ -10,7 +10,7 @@ The classes have been built with app testing as a top priority and in this proje
 The app includes examples can be viewed at:
 
 
-### http://airpair.us/index.html
+### http://badass-backbone.hackerpreneurialism.com
 
 
 Setting up & running locally
@@ -53,3 +53,12 @@ Testing classes
 ===============================================================================
 
 More to come on this topic in the future!
+
+
+
+In progress (things JK is working on next)
+===============================================================================
+
+1) A single page app
+
+2) The BadassView
