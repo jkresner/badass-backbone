@@ -1,128 +1,122 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Badass Backbone</title>
-        <meta name="description" content="A brunch app skeleto showcasing some backbone code">
-        <meta name="viewport" content="width=device-width">
-        <meta name="author" content="Jonathon Kresnder">
-        <!-- Place favicon.ico and apple-touch-icon.png in root dir -->
-        <script src="javascripts/modernizr.js"></script>
-        <script src="javascripts/badass-backbone.js"></script>
-        <link rel="stylesheet" href="/stylesheets/app.css">
-        <link rel="stylesheet" href="/stylesheets/layout.css">
-    </head>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Badass Backbone</title>
+      <meta name="description" content="Backbone.js classes, patterns and testing strategies to improve your productivity">
+      <meta name="viewport" content="width=device-width">
+      <meta name="author" content="Jonathon Kresner">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="stylesheet" href="/stylesheets/layout.css">
+  </head>
 
-    <body>
+  <body>
 
-      <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="#">Home</a></li>
+      </ul>
+      <h3 class="muted">Badass Backbone.js</h3>
+      <p>A minimalist set of backbone.js base classes to help develop & test backbone apps quicker.</p>
+    </div>
+
+
+    <div class="jumbotron">
+      <h1>Write Badass <a href="http://backbonejs.org" target="_blank">Backbone.js</a>!</h1>
+      <p class="lead">In this project you'll find BADASS patterns & approaches to writing + testing backbone.js apps.</p>
+
+    </div>
+
+    <p style="color:red;text-align:center">This project is an un-finished work in progress! Pleas follow along at <a href="http://www.hackerpreneurialism.com" target="_blank">hackerpreneurialism.com</a></p>
+
+    <p style="text-align:center">
+      Want backbone.js help? =>
+      <a href="http://www.airpair.com/request-expert/jkresner" title="Pair programming, Code review, Software architecture advice & coder mentoring.">{ Book me by the hour on airpair.com }</a></p>
+
+
+    <div class="row-fluid marketing">
+      <div class="span4 col">
+
+        <h4>Badass Backbone Classes</h4>
+
+        <h5>Models</h5>
+
+        <ul>
+          <li>BadassModel</li>
+          <li>StubbingModel (coming in the future)</li>
+          <li>SublistModel</li>
+          <li>SessionModel</li>
         </ul>
-        <h3 class="muted">Badass Backbone.js</h3>
-        <p>A minimalist set of backbone.js base classes to help develop & test backbone apps quicker.</p>
+
+        <h5>Collections</h5>
+
+        <ul>
+          <li>BadassCollection</li>
+          <li>StubbingCollection (coming in the future)</li>
+          <li>FilteringCollection</li>
+          <li>PagingCollection</li>
+        </ul>
+
+
+        <h5>Views</h5>
+
+        <ul>
+          <li><a href="/classes/badassview.html">BadassView</a></li>
+          <li>HasErrorStateView</li>
+          <li>HasBootstrapStateView</li>
+          <li>ModelSaveView</li>
+          <li>CollectionView (coming in the future)</li>
+        </ul>
+
+        <h5>Routers</h5>
+
+        <ul>
+          <li>BadassRouter</li>
+          <li>SessionRouter</li>
+        </ul>
+
       </div>
 
+      <div class="span4 col">
+        <h4>Demos</h4>
 
-      <div class="jumbotron">
-        <h1>Write Badass <a href="http://backbonejs.org" target="_blank">Backbone.js</a>!</h1>
-        <p class="lead">In this project you'll find BADASS patterns & approaches to writing + testing backbone.js apps.</p>
+        <h5>Beginner</h5>
+
+        <ul>
+          <li><a href="/demos/spa.html">Simple Single Page Application (SPA)</a></li>
+        </ul>
+
+        <h5>Intermediate</h5>
+
+        <ul>
+          <li><a href="/developers.html">Filtering & Paging Developers</a></li>
+        </ul>
+
+        <h5>Testing</h5>
+
+        <ul>
+          <li>Coming soon</li>
+        </ul>
 
       </div>
 
-      <p style="color:red;text-align:center">This project is largely an un-finished work in progress! You can follow along at <a href="http://www.hackerpreneurialism.com" target="_blank">hackerpreneurialism.com</a></p>
+      <div class="span4 col">
+        <h4>Blog posts</h4>
 
-      <p style="text-align:center">
-        Want backbone.js help? =>
-        <a href="http://www.airpair.com/request-expert/jkresner" title="Pair programming, Code review, Software architecture advice & coder mentoring.">{ Book me by the hour on airpair.com }</a></p>
-
-
-      <div class="row-fluid marketing">
-        <div class="span4 col">
-
-          <h4>Badass Backbone Classes</h4>
-
-          <h5>Models</h5>
-
-          <ul>
-            <li>BadassModel</li>
-            <li>StubbingModel (coming in the future)</li>
-            <li>SublistModel</li>
-            <li>SessionModel</li>
-          </ul>
-
-          <h5>Collections</h5>
-
-          <ul>
-            <li>BadassCollection</li>
-            <li>StubbingCollection (coming in the future)</li>
-            <li>FilteringCollection</li>
-            <li>PagingCollection</li>
-          </ul>
-
-
-          <h5>Views</h5>
-
-          <ul>
-            <li><a href="/classes/badassview.html">BadassView</a></li>
-            <li>HasErrorStateView</li>
-            <li>HasBootstrapStateView</li>
-            <li>ModelSaveView</li>
-            <li>CollectionView (coming in the future)</li>
-          </ul>
-
-          <h5>Routers</h5>
-
-          <ul>
-            <li>BadassRouter</li>
-            <li>SessionRouter</li>
-          </ul>
-
-        </div>
-
-        <div class="span4 col">
-          <h4>Demos</h4>
-
-          <h5>Beginner</h5>
-
-          <ul>
-            <li><a href="/demos/spa.html">Simple Single Page Application (SPA)</a></li>
-          </ul>
-
-          <h5>Intermediate</h5>
-
-          <ul>
-            <li><a href="/developers.html">Filtering & Paging Developers</a></li>
-          </ul>
-
-          <h5>Testing</h5>
-
-          <ul>
-            <li>Coming soon</li>
-          </ul>
-
-        </div>
-
-        <div class="span4 col">
-          <h4>Blog posts</h4>
-
-          <ul>
-            <li><a taget="_blank" href="http://hackerpreneurialism.com/post/50019061545/backbone-badassview-moving-away-from-id-towards-name">Moving from id attribute towards name</a></li>
-            <li><a target="_blank" href="http://hackerpreneurialism.com/post/43856239262/backbonejs-auto-logging-underscore-wrap">Auto logging views</a></li>
-            <li><a target="_blank" href="http://hackerpreneurialism.com/post/42987323678/backbone-js-paging-sorting-filtering-collection">Filtering & Paging Collections</a></li>
-          </ul>
-        </div>
+        <ul>
+          <li><a taget="_blank" href="http://hackerpreneurialism.com/post/50019061545/backbone-badassview-moving-away-from-id-towards-name">Moving from id attribute towards name</a></li>
+          <li><a target="_blank" href="http://hackerpreneurialism.com/post/43856239262/backbonejs-auto-logging-underscore-wrap">Auto logging views</a></li>
+          <li><a target="_blank" href="http://hackerpreneurialism.com/post/42987323678/backbone-js-paging-sorting-filtering-collection">Filtering & Paging Collections</a></li>
+        </ul>
       </div>
+    </div>
 
-      <hr>
+    <hr>
 
-      <div class="footer">
-        <p>&copy; <a href="http://www.airpair.com/" title="Pair programming, Code review, Software architecture advice & coder mentoring.">AirPair</a> | <a href="http://www.twitter.com/hackerpreneur">@hackerpreneur</a> 2013</p>
-      </div>
+    <div class="footer">
+      <p>&copy; <a href="http://www.airpair.com/" title="Pair programming, Code review, Software architecture advice & coder mentoring.">AirPair</a> | <a href="http://www.twitter.com/hackerpreneur">@hackerpreneur</a> 2013</p>
+    </div>
 
-
-    </body>
-    <script src="javascripts/vendor.js" defer></script>
-    <script src="javascripts/app.js" defer onload="require('initialize');"></script>
+  </body>
 </html>
