@@ -1,6 +1,5 @@
-sexports = {}
-BB = require './../../lib/badassbackbone'
-Models = require './Models'
+BB = require 'badass-backbone'
+Models = require './models'
 
 
 class exports.Teas extends BB.FilteringCollection

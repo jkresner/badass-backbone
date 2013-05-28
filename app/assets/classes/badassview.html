@@ -1,74 +1,50 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Badass Backbone Brunch</title>
-        <meta name="description" content="A brunch app skeleto showcasing some backbone code">
-        <meta name="viewport" content="width=device-width">
-        <meta name="author" content="Jonathon Kresnder">
-        <!-- Place favicon.ico and apple-touch-icon.png in root dir -->
-        <script src="javascripts/modernizr.js"></script>
-        <link rel="stylesheet" href="/stylesheets/app.css">
-        <style>
-          td { padding:5px ;}
-          .saved { background-color:green }
-          pre span { color:green;font-size:10px }
-        </style>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>BadassView</title>
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <link rel="stylesheet" href="/stylesheets/layout.css">
+    <style>
+      td { padding:5px; }
+      .saved { background-color:#CCFFCC }
+    </style>
+</head>
+<body>
 
-        <div class="container-narrow">
+  <div class="masthead">
+    <ul class="nav nav-pills pull-right">
+      <li class="active"><a href="#">Home</a></li>
+    </ul>
+    <h3 class="muted">BadassView (BaseView)</h3>
+  </div>
 
-          <div class="masthead">
-            <ul class="nav nav-pills pull-right">
-              <li class="active"><a href="#">Home</a></li>
-            </ul>
+  <h2>Demo</h2>
 
-            <h3 class="muted">BadassView (BaseView)</h3>
-          </div>
+  <p>Open your browser console and watch the log statements fire as you click the save buttons.</p>
 
-          <hr>
+  <div id="teas"></div>
 
-          <p>BadassView is a normal Backbone.View with attributes to
-            enabled/disable logging & automatically setting constructor arguments
-            as attributes on the view instance.</p>
+  <h2>Code & discussion</h2>
+  <hr>
+  <script src="https://gist.github.com/jkresner/5548540.js"></script>
 
-           <p>Open your browser console to see logging output.</p>
+  <div class="footer"></div>
 
-<pre>
-  class TeaView inherits BB.BadassView
-    logging: on   <span># set on / off for logging to console output</span>
-    autoSetConstructorArgs: on   <span># set on / off to avoid assigning left hand, right hand in initialize</span>
-</pre>
+</body>
+  <script src="/javascripts/vendor.js" defer></script>
+  <script src="/javascripts/badass-backbone.js"></script>
+  <script src="/javascripts/app.js" defer onload="initApp()"></script>
+  <script type="text/javascript">
 
-          <h4>Teas</h4>
+    function initApp()
+    {
+      require('/scripts/stubs/base');
+      var pagedata = { teas: stubs.teas };
 
-          <div id="teas"></div>
+      Router = require('/scripts/classes/badassview/router');
+      window.router = new Router(pagedata);
+    }
 
-          <hr>
-
-
-          <div class="footer">
-            <p>&copy; <a href="http://airpair.co/">AirPair</a> 2013</p>
-          </div>
-
-        </div> <!-- /container -->
-
-    </body>
-    <script src="javascripts/vendor.js" defer></script>
-    <script src="javascripts/app.js" defer onload="require('demos/badassview/App');"></script>
-    <script type="text/javascript">
-
-        function initSPA(SPA) {
-
-            var pagedata = {
-              teas: stubs.teas
-            };
-
-            window.router = new SPA.Router({ page: new SPA.Page(pagedata) });
-            Backbone.history.start();
-        }
-
-    </script>
+  </script>
 </html>

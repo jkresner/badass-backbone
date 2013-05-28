@@ -1,6 +1,6 @@
-#$log 'Stubs.base'
+# $log 'Stubs.base'
 
-@stubs ?= {}
+@stubs = {} if !@stubs?
 
 @stubs.dates =
   todayEpoch: new Date().getTime()

@@ -1,35 +1,35 @@
-""" BadassView adds two basic bits of functionality to a normal Backbone.View
-    1) Auto-logging on invocation of initialize, render & save
-    2) Auto set constructor args as attributes on the view instance
+""" BadassView add 3 basic bits of functionality to a normal Backbone.View
+    1) Auto-logging of initialize, render & save
+    2) Auto setting constructor args as attributes on view instances
+    3) Short elm() to access an html element based on it's name attribute
 """
 module.exports = class BadassView extends Backbone.View
 
   # Set logging on /off
   # Why? : During dev it's handy to see the flow your views execute in
-  #        to confirm you don't have extra listeners firing etc.
   logging: on
 
   # Set autoSetConstructorArgs on /off
-  # Why? : Often with bigger apps views are associated with multiple
-  #        models /collections and you tend to write LHRH (left hand,
-  #        right hand) assignment in initialize. autoSetConstructorArgs
-  #        is a convention that any key /values passed to the constructor
-  #        gets set like 'model' & 'collection' in default backbone.
+  # Why? : If you tend to write left hand, right hand assignment in
+  #        initialize stop! autoSetConstructorArgs is a convention to
+  #        set key /values passed to the constructor just like
+  #        'model' & 'collection' is by default by backbone.
   autoSetConstructorArgs: on
 
 
   constructor: (args) ->
 
-    # allow us to autoSetConstructorArgs via instance constructor
+    # allow to set autoSetConstructorArgs via instance constructor
     if args? && args.autoSetConstructorArgs?
       @autoSetConstructorArgs = args.autoSetConstructorArgs
 
+    # assign each key/value passed in onto the view instance
     if @autoSetConstructorArgs
       for own attr, value of args
         @[attr] = value
 
-    if @logging
-      @enableLogging()
+    # wire up auto logging
+    @enableLogging() if @logging
 
     # Call backbone to correctly wire up & call View.initialize
     Backbone.View::constructor.apply(@, arguments)
@@ -37,8 +37,7 @@ module.exports = class BadassView extends Backbone.View
 
   enableLogging: ->
 
-    # Get the class name of the child view, like "TeasView"
-    # So we can use this name in logging to distinguish the view
+    # Get type name of the view to distinguish it in log statements
     @viewTypeName = @constructor.name
 
     if @initialize?
@@ -56,8 +55,7 @@ module.exports = class BadassView extends Backbone.View
         $log "#{@viewTypeName}.save", args
         fn.call @, args
 
-  # Want to stop referring to elements by id
-  # Use name attribute instead
-  # + be strict about only looking inside the view's scope
+  # Promote using name attribute instead of id and being
+  # strict about only looking inside the view's DOM scope
   elm: (attr) ->
     @$("[name='#{attr}']")

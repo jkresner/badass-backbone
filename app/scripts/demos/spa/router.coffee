@@ -16,10 +16,13 @@ module.exports = class Router extends BB.BadassAppRouter
     'step3'       : 'step3'
 
   appConstructor: (pageData, callback) ->
-    d = {}
-#      company: new M.Company _id: 'me'
-    v = {}
- #     welcomeView: new V.WelcomeView()
+    d =
+      company: new M.Company( _id: 'me' )
+      companys: new C.Companys()
+    v =
+      welcomeView: new V.WelcomeView()
+
+    @setOrFetch company, pageData.company
 
     _.extend d, v
 
