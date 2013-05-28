@@ -149,7 +149,7 @@ window.require.register("BB/collections/FilteringCollection", function(exports, 
   };
 
   module.exports = FilteringCollection;
-
+  
 });
 window.require.register("BB/collections/PagingCollection", function(exports, require, module) {
   var FilteringCollection, PagingCollection,
@@ -206,11 +206,11 @@ window.require.register("BB/collections/PagingCollection", function(exports, req
   })(FilteringCollection);
 
   module.exports = PagingCollection;
-
+  
 });
 window.require.register("BB/collections/StubbingCollection", function(exports, require, module) {
-
-
+  
+  
 });
 window.require.register("BB/collections/comparators", function(exports, require, module) {
   var exports;
@@ -225,7 +225,7 @@ window.require.register("BB/collections/comparators", function(exports, require,
       }));
     }
   };
-
+  
 });
 window.require.register("BB/models/BadassModel", function(exports, require, module) {
   var BadassModel,
@@ -254,7 +254,7 @@ window.require.register("BB/models/BadassModel", function(exports, require, modu
     return BadassModel;
 
   })(Backbone.Model);
-
+  
 });
 window.require.register("BB/models/SessionModel", function(exports, require, module) {
   var BadassModel, SessionModel, _ref,
@@ -276,7 +276,7 @@ window.require.register("BB/models/SessionModel", function(exports, require, mod
     return SessionModel;
 
   })(BadassModel);
-
+  
 });
 window.require.register("BB/models/SublistModel", function(exports, require, module) {
   var BadassModel, SublistModel, _ref,
@@ -314,26 +314,26 @@ window.require.register("BB/models/SublistModel", function(exports, require, mod
     return SublistModel;
 
   })(BadassModel);
-
+  
 });
 window.require.register("BB/routers/BadassAppRouter", function(exports, require, module) {
-  "BadassRouter takes the philosophical position that only one router\ncan be used for one html page / single page app and it is the top most\napp container object other than window.\n\nA bad ass router knows how to construct all the pieces of a page using\n@appConstructor. This includes all models, collections and views.\n\nIt also assumes that each route has an associated top level views\nwhich becomes visible when you hit that route and all other become hidden";
-  var BadassRouter,
+  "BadassAppRouter takes the philosophical position that only one router\ncan be used for one html page / single page app and it is the top most\napp container object other than window.\n\nA bad ass router knows how to construct all the pieces of a page using\n@appConstructor. This includes all models, collections and views.\n\nIt also assumes that each route has an associated top level views\nwhich becomes visible when you hit that route and all other become hidden";
+  var BadassAppRouter,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  module.exports = BadassRouter = (function(_super) {
-    __extends(BadassRouter, _super);
+  module.exports = BadassAppRouter = (function(_super) {
+    __extends(BadassAppRouter, _super);
 
-    BadassRouter.prototype.logging = false;
+    BadassAppRouter.prototype.logging = false;
 
-    BadassRouter.prototype.pushState = true;
+    BadassAppRouter.prototype.pushState = true;
 
-    BadassRouter.prototype.pushStateRoot = '/';
+    BadassAppRouter.prototype.pushStateRoot = '/';
 
-    BadassRouter.prototype.enableExternalProviders = true;
+    BadassAppRouter.prototype.enableExternalProviders = true;
 
-    function BadassRouter(pageData, callback) {
+    function BadassAppRouter(pageData, callback) {
       var app, history,
         _this = this;
 
@@ -345,7 +345,7 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
         this.pageData = pageData;
       }
       app = this.appConstructor(pageData, callback);
-      this.app = _.extend(this.app, app);
+      this.app = this.app != null ? _.extend(this.app, app) : app;
       if (this.logging) {
         $log('BadassRouter.app', this.app);
       }
@@ -375,11 +375,11 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
       Backbone.Router.prototype.constructor.apply(this, arguments);
     }
 
-    BadassRouter.prototype.appConstructor = function(pageData, callback) {
+    BadassAppRouter.prototype.appConstructor = function(pageData, callback) {
       throw new Error('override appConstructor in child router & build all models, collections & views then return single objects');
     };
 
-    BadassRouter.prototype.wrapRoutes = function() {
+    BadassAppRouter.prototype.wrapRoutes = function() {
       var route, routeName, _results,
         _this = this;
 
@@ -397,6 +397,7 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
             }
             $(".route").hide();
             $("#" + fn.routeName).show();
+            window.scrollTo(0, 0);
             _this.routeMiddleware();
             return fn.call(_this, args);
           }));
@@ -407,11 +408,11 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
       return _results;
     };
 
-    BadassRouter.prototype.routeMiddleware = function() {};
+    BadassAppRouter.prototype.routeMiddleware = function() {};
 
-    BadassRouter.prototype.loadExternalProviders = function() {};
+    BadassAppRouter.prototype.loadExternalProviders = function() {};
 
-    BadassRouter.prototype.navTo = function(routeUrl, trigger) {
+    BadassAppRouter.prototype.navTo = function(routeUrl, trigger) {
       var currentFragment;
 
       if (trigger == null) {
@@ -426,13 +427,14 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
       });
     };
 
-    BadassRouter.prototype.enablePushStateNavigate = function() {
+    BadassAppRouter.prototype.enablePushStateNavigate = function() {
       var _this = this;
 
       return $("body").on("click", "a", function(e) {
-        var href;
+        var $a, href;
 
-        href = $(e.currentTarget).attr('href');
+        $a = $(e.currentTarget);
+        href = $a.attr('href');
         if (href.length && href.charAt(0) === '#') {
           e.preventDefault();
           return _this.navTo(href.replace('#', ''));
@@ -440,7 +442,7 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
       });
     };
 
-    BadassRouter.prototype.setOrFetch = function(model, data, opts) {
+    BadassAppRouter.prototype.setOrFetch = function(model, data, opts) {
       if (data != null) {
         return model.set(data);
       }
@@ -451,7 +453,7 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
       return model.fetch(opts);
     };
 
-    BadassRouter.prototype.resetOrFetch = function(collection, data, opts) {
+    BadassAppRouter.prototype.resetOrFetch = function(collection, data, opts) {
       if (data != null) {
         return collection.reset(data);
       }
@@ -462,10 +464,10 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
       return collection.fetch(opts);
     };
 
-    return BadassRouter;
+    return BadassAppRouter;
 
   })(Backbone.Router);
-
+  
 });
 window.require.register("BB/routers/SessionRouter", function(exports, require, module) {
   var BadassAppRouter, SessionRouter,
@@ -513,10 +515,10 @@ window.require.register("BB/routers/SessionRouter", function(exports, require, m
     return SessionRouter;
 
   })(BadassAppRouter);
-
+  
 });
 window.require.register("BB/views/BadassView", function(exports, require, module) {
-  " BadassView adds two basic bits of functionality to a normal Backbone.View\n1) Auto-logging on invocation of initialize, render & save\n2) Auto set constructor args as attributes on the view instance";
+  " BadassView add 3 basic bits of functionality to a normal Backbone.View\n1) Auto-logging of initialize, render & save\n2) Auto setting constructor args as attributes on view instances\n3) Short elm() to access an html element based on it's name attribute";
   var BadassView,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -578,7 +580,7 @@ window.require.register("BB/views/BadassView", function(exports, require, module
     return BadassView;
 
   })(Backbone.View);
-
+  
 });
 window.require.register("BB/views/HasBootstrapErrorStateView", function(exports, require, module) {
   "Backbone.Validation is (should) already be available on the global scope\n\nTODO: JK(03.16.13) consider reviewing & moving backbone-validation_bootstrap\ninto this class";
@@ -635,7 +637,7 @@ window.require.register("BB/views/HasBootstrapErrorStateView", function(exports,
     return HasBootstrapErrorStateView;
 
   })(HasErrorStateView);
-
+  
 });
 window.require.register("BB/views/HasErrorStateView", function(exports, require, module) {
   var BadassView, HasErrorStateView,
@@ -715,7 +717,7 @@ window.require.register("BB/views/HasErrorStateView", function(exports, require,
     return HasErrorStateView;
 
   })(BadassView);
-
+  
 });
 window.require.register("BB/views/ModelSaveView", function(exports, require, module) {
   var HasBootstrapErrorStateView, ModelSaveView,
@@ -799,7 +801,7 @@ window.require.register("BB/views/ModelSaveView", function(exports, require, mod
     return ModelSaveView;
 
   })(HasBootstrapErrorStateView);
-
+  
 });
 window.require.register("badass-backbone", function(exports, require, module) {
   module.exports = {
@@ -815,5 +817,5 @@ window.require.register("badass-backbone", function(exports, require, module) {
     BadassAppRouter: require('./BB/routers/BadassAppRouter'),
     SessionRouter: require('./BB/routers/SessionRouter')
   };
-
+  
 });
