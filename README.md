@@ -3,14 +3,11 @@ About
 
 Baddass Backbone is a minimalist set of abstract models, collections and views that stay close to backbone philosophy and greatly reduce code.
 
-The classes have been built with app testing as a top priority and in this project you will find methods and approaches to both unit and integration style testing.
+The classes have been built with app testing as top priority. In this project you will find methods and approaches to both unit and integration style testing.
 
-## Live demo
+## Live demo & documentation
 
-The app includes examples can be viewed at:
-
-
-### http://badass-backbone.hackerpreneurialism.com
+### http://badass-backbone.hackerpreneurialism.com/
 
 
 Setting up & running locally
@@ -27,38 +24,8 @@ Setting up & running locally
 5. Open app => http://localhost:3333/
 
 
-Awesome classes
-===============================================================================
-
-## Awsum Classes
-
-- BadassModel
-- StubbingModel         (coming in the future)
-- SublistModel
-- SessionModel
-
-- BadassCollection
-- StubbingCollection    (coming in the future)
-- FilteringCollection
-- PagingCollection
-
-- BadassView
-- HasErrorStateView
-- HasBootstrapStateView
-- ModelSaveView
-- CollectionView        (coming in the future)
-
-
-Testing classes
-===============================================================================
-
-More to come on this topic in the future!
-
-
-
 In progress (things JK is working on next)
 ===============================================================================
 
-1) A single page app
-
-2) The BadassView
+1) Site wide layout with sharing stuff
+2) The single page app demo

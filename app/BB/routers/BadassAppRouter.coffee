@@ -64,9 +64,13 @@ module.exports = class BadassAppRouter extends Backbone.Router
     Backbone.Router::constructor.apply @, arguments
 
 
-  # construct all instances of models, collection & views for page
+  # Construct all models/ collections & views for our SPA, the will be
+  # assigned onto window.router.app (in the constructor) having them all
+  # accessible means easy testing, stubbing of all objects that make up
+  # our SPA
   appConstructor: (pageData, callback) ->
     throw new Error 'override appConstructor in child router & build all models, collections & views then return single objects'
+
 
   # automatically wrap route handlers
   # adding div hide/show + console logging (if enabled)
