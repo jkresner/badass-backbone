@@ -19,7 +19,8 @@
         "css-brunch": "> 1.0 < 1.5",
         "handlebars-brunch": "> 1.0 < 1.5",
         "uglify-js-brunch": "> 1.0 < 1.5",
-        "clean-css-brunch": "> 1.0 < 1.5"
+        "clean-css-brunch": "> 1.0 < 1.5",
+        "underscore": "1.4.x"
     },
     "devDependencies": {
         "mocha": "0.14.0",
