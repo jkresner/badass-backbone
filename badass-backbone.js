@@ -228,6 +228,7 @@ window.require.register("BB/collections/comparators", function(exports, require,
   
 });
 window.require.register("BB/models/BadassModel", function(exports, require, module) {
+  " BadassModel add 2 basic bits of functionality to a normal Backbone.Model\n1) Auto-logging of events to\n2) Short hand to extend the json object of the model";
   var BadassModel,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -235,20 +236,38 @@ window.require.register("BB/models/BadassModel", function(exports, require, modu
   module.exports = BadassModel = (function(_super) {
     __extends(BadassModel, _super);
 
+    BadassModel.prototype.logging = false;
+
     BadassModel.prototype.idAttribute = '_id';
 
     function BadassModel(args) {
+      if (this.logging) {
+        $log('BadassMode.ctor', args);
+        this.enableLogging();
+      }
       Backbone.Model.prototype.constructor.apply(this, arguments);
     }
 
-    BadassModel.prototype.validateNonEmptyArray = function(value, attr, computedState) {
-      if ((value == null) || value.length === 0) {
-        return true;
-      }
+    BadassModel.prototype.extendJSON = function(args) {
+      return _.extend(this.toJSON(), args);
     };
 
-    BadassModel.prototype.extend = function(args) {
-      return _.extend(this.toJSON(), args);
+    BadassModel.prototype.enableLogging = function() {
+      var _this = this;
+
+      this.modelTypeName = this.constructor.name;
+      this.listenTo(this, 'change', function(e) {
+        return $log("" + _this.modelTypeName + ".change", e);
+      });
+      this.listenTo(this, 'request', function(e) {
+        return $log("" + _this.modelTypeName + ".request", e);
+      });
+      this.listenTo(this, 'invalid', function(e) {
+        return $log("" + _this.modelTypeName + ".invalid", e);
+      });
+      return this.listenTo(this, 'error', function(e) {
+        return $log("" + _this.modelTypeName + ".error", e);
+      });
     };
 
     return BadassModel;
@@ -314,6 +333,16 @@ window.require.register("BB/models/SublistModel", function(exports, require, mod
     return SublistModel;
 
   })(BadassModel);
+  
+});
+window.require.register("BB/models/errorHandlingModel", function(exports, require, module) {
+  ({
+    validateNonEmptyArray: function(value, attr, computedState) {
+      if ((value == null) || value.length === 0) {
+        return true;
+      }
+    }
+  });
   
 });
 window.require.register("BB/routers/BadassAppRouter", function(exports, require, module) {
@@ -398,7 +427,7 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
             $(".route").hide();
             $("#" + fn.routeName).show();
             window.scrollTo(0, 0);
-            _this.routeMiddleware();
+            _this.routeMiddleware(fn);
             return fn.call(_this, args);
           }));
         } else {
@@ -408,7 +437,7 @@ window.require.register("BB/routers/BadassAppRouter", function(exports, require,
       return _results;
     };
 
-    BadassAppRouter.prototype.routeMiddleware = function() {};
+    BadassAppRouter.prototype.routeMiddleware = function(routeFn) {};
 
     BadassAppRouter.prototype.loadExternalProviders = function() {};
 

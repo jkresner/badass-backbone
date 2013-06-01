@@ -17,7 +17,7 @@ Setting up & running locally
 
 2. Get node modules: `npm install`
 
-3. Install PhantomJS & mocha-phantomjs (For testing) `npm install -g mocha-phantomjs phantomjs`
+3. Install mocha, PhantomJS & mocha-phantomjs (For testing) `sudo npm install -g mocha mocha-phantomjs phantomjs`
 
 4. Run brunch server: `brunch watch --server`
 

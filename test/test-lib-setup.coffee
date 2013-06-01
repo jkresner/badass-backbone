@@ -12,3 +12,4 @@ module.exports =
   chai:       require 'chai'
   expect:     chai.expect
   Backbone:   require './../vendor/scripts/backbone'
+  # BB:         require './../vendor/scripts/badass-backbone'
