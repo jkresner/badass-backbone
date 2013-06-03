@@ -5,7 +5,7 @@ module.exports =
   SublistModel:                 require './BB/models/SublistModel'
   SessionModel:                 require './BB/models/SessionModel'
 
-  # Smart Collection
+  # Smart Collections
   FilteringCollection:          require './BB/collections/FilteringCollection'
   PagingCollection:             require './BB/collections/PagingCollection'
 
@@ -15,5 +15,6 @@ module.exports =
   HasBootstrapErrorStateView:   require './BB/views/HasBootstrapErrorStateView'
   ModelSaveView:                require './BB/views/ModelSaveView'
 
+  # Smart Routers
   BadassAppRouter:              require './BB/routers/BadassAppRouter'
   SessionRouter:                require './BB/routers/SessionRouter'
