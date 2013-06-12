@@ -2,7 +2,7 @@
 
 fixture = "<div id='fix'></div>"
 
-describe 'Second Test Suite =>', ->
+describe 'Second Test Suite', ->
 
   before ->
   afterEach ->

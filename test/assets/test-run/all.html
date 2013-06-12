@@ -1,0 +1,46 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Test Harness</title>
+  <link rel="stylesheet" href="/test/stylesheets/test.css" />
+  <script src="/javascripts/vendor.js"></script>
+  <script src="/javascripts/badass-backbone.js"></script>
+  <script src="/javascripts/app.js"></script>
+  <script src="/test/javascripts/test-vendor.js"></script>
+  <script src="/test/javascripts/test.js" defer></script>
+  <script>
+    mocha.setup({
+
+      //leave grep commented out to run all tests
+      //grep: '',
+
+      ui: 'bdd',
+
+      // ignored global leaks: https://github.com/cjohansen/Sinon.JS/issues/143
+      globals: [
+        '__screenCapturePageContext__',
+        'script*',
+        'setTimeout',
+        'setInterval',
+        'clearTimeout',
+        'clearInterval',
+        '__e3_',
+        '_xdc_',
+        'initApp',
+        'router'
+      ]
+    });
+
+    window.expect = chai.expect;
+
+    $(function() {
+      if (window.mochaPhantomJS) { mochaPhantomJS.run(); } //-- terminal mode
+      else { mocha.run(); } //-- browser mode
+    });
+
+  </script>
+</head>
+<body>
+  <div id="mocha"></div>
+</body>
+</html>

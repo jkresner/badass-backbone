@@ -1,7 +1,8 @@
 @charset "UTF-8";
 body {
   font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding: 10px 50px;
+  padding:0 10px;
+  margin:0;
 }
 
 h1 a { font-size:14px;font-weight:bold }

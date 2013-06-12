@@ -28,11 +28,13 @@ Integration Testing
 ===============================================================================
 
 
-*** Where your test code lives and gets built
+*** Where your test code lives + gets built
 
-Brunch compiles all files inside of /test (dir) that end with '_test' into /test/javascript/test.js
+/test/javascript/test.js
+Brunch compiles all files in /test (dir) that end with '_test' into
 
-Brunch also combines all files inside of /test/vendor into /test/javascript/test-vendor.js
+/test/javascript/test-vendor.js
+Brunch also combines all files inside of /test/vendor into
 
 (you can see and configure this in /config.coffee)
 
