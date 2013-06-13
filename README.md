@@ -17,15 +17,23 @@ Setting up & running locally
 
 2. Get node modules: `npm install`
 
-3. Install PhantomJS & mocha-phantomjs (For testing) `npm install -g mocha-phantomjs phantomjs`
+3. Install mocha, PhantomJS & mocha-phantomjs (For testing) `sudo npm install -g mocha mocha-phantomjs phantomjs`
 
 4. Run brunch server: `brunch watch --server`
 
 5. Open app => http://localhost:3333/
 
 
+Testing your app
+===============================================================================
+
+## Demo & overview
+
+### http://badass-backbone.hackerpreneurialism.com/test/overview.html
+
+
 In progress (things JK is working on next)
 ===============================================================================
 
-1) Site wide layout with sharing stuff
-2) The single page app demo
+1) Site wide layout with sharing stuff like menu links
+2) Incorporate Travis CI into badass-backbone

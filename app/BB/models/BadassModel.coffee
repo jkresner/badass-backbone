@@ -40,3 +40,7 @@ module.exports = class BadassModel extends Backbone.Model
     @listenTo @, 'request', (e) => $log("#{@modelTypeName}.request", e)
     @listenTo @, 'invalid', (e) => $log("#{@modelTypeName}.invalid", e)
     @listenTo @, 'error', (e) => $log("#{@modelTypeName}.error", e)
+
+  validateNonEmptyArray: (value, attr, computedState) ->
+    # $log 'validateNonEmptyArray', value, attr, computedState
+    if !value? || value.length is 0 then true

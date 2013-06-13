@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests Grep Example</title>
+  <link rel="stylesheet" href="/test/stylesheets/test.css" />
+  <script src="/javascripts/vendor.js"></script>
+  <script src="/javascripts/badass-backbone.js"></script>
+  <script src="/javascripts/app.js"></script>
+  <script src="/test/javascripts/test-vendor.js"></script>
+  <script src="/test/javascripts/test.js" defer></script>
+  <script>
+    mocha.setup({
+
+      // Comment / un-comment one grep at
+      // a time to see it in action ...
+
+      grep: 'First Test Suite',
+      // grep: 'Second Test Suite',
+      // grep: 'First one',
+      // grep: 'one',
+
+      ui: 'bdd'
+    });
+
+    window.expect = chai.expect;
+
+    $(function() {
+      if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+      else { mocha.run(); }
+    });
+  </script>
+</head>
+<body>
+  <div id="mocha"></div>
+</body>
+</html>

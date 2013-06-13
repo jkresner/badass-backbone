@@ -1,8 +1,6 @@
-{expect, Backbone} = require './../test-lib-setup'
-global.Backbone = Backbone
-M = require './../../app/scripts/demos/spa/models'
+M = require '/scripts/demos/spa/models'
 
-describe "Model examples", ->
+describe "Model logic unit test example", ->
 
   it "tagsString returns empty string for null tags", ->
     m = new M.Employee()
