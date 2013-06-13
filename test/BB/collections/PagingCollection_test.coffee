@@ -13,22 +13,25 @@
 # describe 'BB.PagingCollection => ', ->
 
 #   beforeEach ->
-#     hlpr.clean_setup @
+#     hlpr.cleanSetup @
 #     @c = new ExampleCollection()
 #     @twelveitems = [
-#       { id: 1, char: 'a', num: 123 }
-#       { id: 2, char: 'f', num: 223 }
-#       { id: 3, char: 'b', num: 143 }
-#       { id: 4, char: 'e', num: 153 }
-#       { id: 5, char: 'b', num: 173 }
-#       { id: 6, char: 'c', num: 183 }
-#       { id: 7, char: 'd', num: 193 }
-#       { id: 8, char: 'g', num: 123 }
-#       { id: 9, char: 'h', num: 223 }
-#       { id: 10, char: 'i', num: 143 }
-#       { id: 11, char: 'j', num: 153 }
-#       { id: 12, char: 'k', num: 173 }
+#       id: 1, char: 'a', num: 123
+#       id: 2, char: 'f', num: 223
+#       id: 3, char: 'b', num: 143
+#       id: 4, char: 'e', num: 153
+#       id: 5, char: 'b', num: 173
+#       id: 6, char: 'c', num: 183
+#       id: 7, char: 'd', num: 193
+#       id: 8, char: 'g', num: 123
+#       id: 9, char: 'h', num: 223
+#       id: 10, char: 'i', num: 143
+#       id: 11, char: 'j', num: 153
+#       id: 12, char: 'k', num: 173
 #     ]
+
+#   afterEach ->
+#     hlpr.cleanTearDown @
 
 #   it 'reset calls resetFlteredModels once + resetPaging once', ->
 #     @spys.resetPaging = sinon.spy ExampleCollection::, "resetPaging"
@@ -109,6 +112,3 @@
 #     models = @c.fetchPage()
 #     chars = _.map models, (m) -> m.get 'char'
 #     expect(chars).to.deep.equal ['j', 'k']
-
-#   afterEach ->
-#     hlpr.clean_tear_down @
