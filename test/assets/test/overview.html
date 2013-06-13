@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Overview of Testing Badass Backbone</title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="author" content="Jonathon Kresnder">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="stylesheet" href="/stylesheets/layout.css">
+  </head>
+
+  <body>
+
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="/">Home</a></li>
+      </ul>
+      <h3 class="muted">Use grep to run specific tests</h3>
+    </div>
+
+    <h2>Discussion</h2>
+
+    <h4>Where your test code lives + gets built</h4>
+
+    <p>
+      <i>brunch</i> compiles all files in the <code>/test</code> directory that end with <b>_test</b> into <code>/test/javascript/test.js</code>
+    </p>
+
+    <p>
+      <i>brunch</i> also combines all files inside of <code>/test/vendor</code> (like mocha, sinon etc.) into <code>/test/javascript/test-vendor.js</code>
+    </p>
+
+    <p>You can see & configure this in <code>/config.coffee</code></p>
+
+    <h4>How your test code gets executed</h4>
+
+    <p><i>brunch</i> then copies all <b>*.html</b> files in <code>/test/assets/test/</code> into <code>/public/test/assets/test/*</code></p>
+
+    <p>So for example, you can hit in your browser:</p>
+
+    <p><code>http://localhost:3333/test-run/all.html</code></p>
+
+    <p>Where <code>all.html</code> is a mocha test harness page that includes <code>test.js</code> and <code>test-vendor.js</code> and some basic code to invoke your tests.</p>
+
+
+    <h4>Continuous Integration</h4>
+
+    <p>You can also execute your tests from the command line using <b>mocha-phantomjs</b> and this way incorporate your tests into Continuous Integration. To use mocha-phantomjs have you need to have brunch running and then from the terminal execute:</p>
+
+    <p><code>mocha-phantomjs http://localhost:3333/test/index.html</code></p>
+
+    <h4>Execute only specific tests</h4>
+
+    <p>Inside your test/*.html file you can control what tests get executed using the mocha grep (-g) option.</p>
+
+    <p><code>/test-run/all.html</code> has no grep option, so it is setup to run all of your tests. You can uncomment and add any string regex to run a single suite or even a single test or a mixture of tests with matching strings.</p>
+
+    <p>See <a href="/test/grep.html">/test/grep.html</a> for more info. We recommend creating separate /test-run/*.html files to execute groups of tests and leaving /test-run/all.html to run all your tests for CI and such.</p>
+
+    <h2>Demo</h2>
+
+    <p>Open <code>/test-run/all.html</code> to see how all the pieces hang together.</p>
+
+    <iframe src="/test-run/all.html" height="2000px" width="100%" frameborder="0" seamless></iframe>
+
+  </body>
+
+</html>
