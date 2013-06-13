@@ -3,7 +3,7 @@ BB = require 'badass-backbone'
 
 class exports.TeaView extends BB.BadassView
   logging: on       # turn on / off to get console output
-  tagNane: 'tr'
+  tagName: 'tr'
   events:
     'click a': 'save'
   render: ->
