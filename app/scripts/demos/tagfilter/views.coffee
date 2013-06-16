@@ -4,16 +4,27 @@ BB = require 'badass-backbone'
 class exports.TagView extends BB.BadassView
   logging: on
   tmpl: require './templates/tag'
-  render: ->
+  render: -> 
     @$el.html @tmpl @model.toJSON()
     @
 
 
 class exports.TagsView extends BB.BadassView
-  el: '#tags'
+  el: '#tag-filter'
+  events: 
+  	'keypress :input': 'filter'
+  initialize: ->
+  	@input = @$("#tag-filter");
+  	@models= {}
   render: ->
-    $log 'el', @$el
-    @$el.append(new exports.TagView(model:t).render().el) for t in @collection.models
+    @$el.find("#tags").html(new exports.TagView(model:t).render().el) for t in @models
+
+  filter:(e) ->
+    return if (e.keyCode != 13) 
+    return if (!@input.val())
+    tag = @input.val()
+    @models = @collection.where(name: tag)
+    @render()
 
 
 module.exports = exports
