@@ -9,6 +9,10 @@ The classes have been built with app testing as top priority. In this project yo
 
 ### http://badass-backbone.hackerpreneurialism.com/
 
+## Paid support for Badass Backbone
+
+[AirPair{}Me](http://airpair.me/hackerpreneur?utm_source=expert&utm_medium=readme&utm_term=jkresner%2Fbadass-backbone&utm_content=github&utm_campaign=airpairme) for live help with me over video chat and screen-sharing. [AirPair](http://www.airpair.com/) is a community of developers I am part of that help one another through remote pair programming.
+
 
 Setting up & running locally
 ===============================================================================
