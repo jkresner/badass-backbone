@@ -2,6 +2,11 @@
 
 exports.config =
 
+  # do not watch (build) test directory
+  paths:
+    watched: ['app','vendor','test','BB']
+
+
   coffeelint:
     pattern: /^app\/.*\.coffee$/
     options:
@@ -14,8 +19,8 @@ exports.config =
     javascripts:
       joinTo:
        'javascripts/vendor.js': /^vendor/
-       'javascripts/app.js': /^app(\/|\\)(?!(BB|badass-backbone))/
-       'javascripts/badass-backbone.js': /^app(\/|\\)(?=(BB|badass-backbone))/
+       'javascripts/app.js': /^app/
+       'javascripts/badass-backbone.js': /^BB/
        'test/javascripts/test.js': /^test(\/|\\)(?!vendor)/
        'test/javascripts/test-vendor.js': /^test(\/|\\)(?=vendor)/
       order:
