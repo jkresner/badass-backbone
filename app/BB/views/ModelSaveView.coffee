@@ -40,6 +40,8 @@ module.exports = class ModelSaveView extends HasBootstrapErrorStateView
     options = success: @renderSuccess, error: @renderError, wait: !@async
     @model.save newattrs, options
 
+    false
+
   # By default renderSuccess looks for a bootstrap alert-success element
   # override in inheriting classes for custom behavior
   renderSuccess: (model, response, options) =>

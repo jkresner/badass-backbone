@@ -7,7 +7,7 @@ module.exports = class BadassView extends Backbone.View
 
   # Set logging on /off
   # Why? : During dev it's handy to see the flow your views execute in
-  logging: on
+  logging: off
 
   # Set autoSetConstructorArgs on /off
   # Why? : If you tend to write left hand, right hand assignment in
@@ -59,3 +59,6 @@ module.exports = class BadassView extends Backbone.View
   # strict about only looking inside the view's DOM scope
   elm: (attr) ->
     @$("[name='#{attr}']")
+
+  mget: (attr) ->
+    @model.get(attr) if @model?

@@ -3,6 +3,7 @@ Backbone.Validation is (should) already be available on the global scope
 
 TODO: JK(03.16.13) consider reviewing & moving backbone-validation_bootstrap
 into this class
+
 """
 
 HasErrorStateView = require './HasErrorStateView'
@@ -13,9 +14,9 @@ module.exports = class HasBootstrapErrorStateView extends HasErrorStateView
 
   constructor: (args) ->
     HasErrorStateView::constructor.apply @, arguments
-    @errorSummary = @$('.alert-error')
 
   renderErrorSummary: (model, errors) =>
+    @errorSummary = @$('.alert-error')
     if @logging then $log 'renderErrorSummary', model, errors, @errorSummary
 
     # Use big red alert box on server errors
@@ -41,5 +42,5 @@ module.exports = class HasBootstrapErrorStateView extends HasErrorStateView
 
   # refresh the view so errors don't show
   renderInputsValid: ->
-    for input in @$('input')
+    for input in @$('input,textarea,select')
       Backbone.Validation.renderBootstrapInputValid $(input)

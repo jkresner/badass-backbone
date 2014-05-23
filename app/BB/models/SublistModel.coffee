@@ -19,3 +19,5 @@ module.exports = class SublistModel extends BadassModel
         @set attr, (_.without list, match)
       else
         @set attr, (_.union list, [value])
+
+    @trigger "change:#{attr}"

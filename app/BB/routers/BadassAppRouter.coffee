@@ -32,8 +32,16 @@ module.exports = class BadassAppRouter extends Backbone.Router
 
     @pageData = pageData if pageData?
 
+    @defaultFragment = @getDefaultFragment()
+
+    # $log 'preConstructorHook', @preConstructorHook
+    if @preConstructorHook? then @preConstructorHook()
+
     app = @appConstructor pageData, callback
+
     @app = if @app? then _.extend @app, app else app
+
+    if callback? then callback()
 
     if @logging
       $log 'BadassRouter.app', @app
@@ -41,7 +49,6 @@ module.exports = class BadassAppRouter extends Backbone.Router
     @initialize = _.wrap @initialize, (fn, args) =>
 
       Backbone.history.start pushState: @pushState, root: @pushStateRoot
-      defaultFragment = Backbone.history.getFragment()
 
       if @pushState
         @enablePushStateNavigate()
@@ -49,9 +56,9 @@ module.exports = class BadassAppRouter extends Backbone.Router
       if @logging then $log "Router.init", args, @app
       fn.call @, args
 
-      # $log 'defaultFragment', defaultFragment
-      if defaultFragment != currentFragment = Backbone.history.getFragment()
-        @navTo defaultFragment
+      # $log 'defaultFragment', @defaultFragment
+      if @defaultFragment != currentFragment = Backbone.history.getFragment()
+        @navTo @defaultFragment
 
       # wire up our 3rd party provider scripts to load only after our spa
       # had been initialized and constructed
@@ -62,6 +69,17 @@ module.exports = class BadassAppRouter extends Backbone.Router
 
     # Call backbone to correctly wire up & call Router.initialize
     Backbone.Router::constructor.apply @, arguments
+
+  getDefaultFragment: ->
+    if @pushState
+      fragment = window.location.pathname
+      root = @pushStateRoot.replace(/\/$/, '')
+      if !fragment.indexOf(@pushStateRoot)
+        fragment = fragment.substr(root.length)
+    else
+      fragment = Backbone.history.getHash()
+    fragment = '' if fragment is '/'
+    fragment
 
 
   # Construct all models/ collections & views for our SPA, the will be
@@ -130,15 +148,23 @@ module.exports = class BadassAppRouter extends Backbone.Router
 
   # short hand to handle injection of pageData for pre-loading models
   setOrFetch: (model, data, opts) ->
-    if data? then return model.set data
-    opts = {} if !opts?
-    opts.reset = true # backbone 1.0 so slow without this set
-    model.fetch opts
+    if data?
+      model.set data
+      if opts? && opts.success? then opts.success(model,'set',opts)
+      model.trigger 'sync'
+    else
+      opts = {} if !opts?
+      opts.reset = true # backbone 1.0 so slow without this set
+      model.fetch opts
 
 
   # short hand to handle injection of pageData for pre-loading collections
   resetOrFetch: (collection, data, opts) ->
-    if data? then return collection.reset data
-    opts = {} if !opts?
-    opts.reset = true # backbone 1.0 so slow without this set
-    collection.fetch opts
+    if data?
+      collection.reset data
+      if opts? && opts.success? then opts.success(collection,'reset',opts)
+      collection.trigger 'sync'
+    else
+      opts = {} if !opts?
+      opts.reset = true # backbone 1.0 so slow without this set
+      collection.fetch opts

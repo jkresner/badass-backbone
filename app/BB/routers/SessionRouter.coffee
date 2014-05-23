@@ -2,8 +2,6 @@ BadassAppRouter = require './BadassAppRouter'
 
 module.exports = class SessionRouter extends BadassAppRouter
 
-  superConstructor: BadassAppRouter::constructor
-
   # can /should override with your own application specific model
   model: require './../models/SessionModel'
 
@@ -19,19 +17,19 @@ module.exports = class SessionRouter extends BadassAppRouter
     @app = {} if !@app?
     @pageData = pageData if pageData?
 
-    @_setSession pageData, callback
-
-
-  # set our session model, can override this if useful, e.g. in testing
-  # or maybe you want to use local storage instead of xhr ...
-  _setSession: (pageData, callback) =>
-
-    setSuccess = (model, resp, opts) =>
+    setSessionSuccess = (model, resp, opts) =>
 
       if @logging
         $log 'SessionRouter.setSession', @app.session.attributes
 
-      @superConstructor.call @, pageData, callback
+      BadassAppRouter::constructor.call(@, pageData, callback)
 
     @app.session = new @model()
-    @setOrFetch @app.session, pageData.session, { success: setSuccess }
+
+    @setSession pageData.session, setSessionSuccess
+
+  # set our session model, can override this if useful, e.g. in testing
+  # or maybe you want to use local storage instead of xhr ...
+  setSession: (sessionData, setSessionSuccess) =>
+
+    @setOrFetch @app.session, sessionData, { success: setSessionSuccess }

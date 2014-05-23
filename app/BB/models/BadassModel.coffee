@@ -11,7 +11,6 @@ module.exports = class BadassModel extends Backbone.Model
   # _id = mongodb ids
   idAttribute:  '_id'
 
-
   constructor: (args) ->
 
     if @logging
@@ -19,7 +18,6 @@ module.exports = class BadassModel extends Backbone.Model
       @enableLogging()
 
     Backbone.Model::constructor.apply @, arguments
-
 
   # Useful when building data request for templates that combines data
   # in the attributes of the model plus computed data from another source
@@ -30,6 +28,11 @@ module.exports = class BadassModel extends Backbone.Model
   extendJSON: (args) ->
     _.extend @toJSON(), args
 
+  extend: (args) -> @extendJSON args
+
+  silentReset: (args) ->
+    @clear silent: true
+    @set args, { silent: true }
 
   enableLogging: ->
 
@@ -41,6 +44,10 @@ module.exports = class BadassModel extends Backbone.Model
     @listenTo @, 'invalid', (e) => $log("#{@modelTypeName}.invalid", e)
     @listenTo @, 'error', (e) => $log("#{@modelTypeName}.error", e)
 
+  # checkfor500: (model, errors, options) ->
+  #   if errors? & errors.code is 500
+  #     exports.render500 errors, 'Failed to get data: ' + model.url
+
   validateNonEmptyArray: (value, attr, computedState) ->
-    # $log 'validateNonEmptyArray', value, attr, computedState
+    # console.log 'validateNonEmptyArray', value, attr, computedState
     if !value? || value.length is 0 then true

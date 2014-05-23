@@ -13,6 +13,14 @@ module.exports = class HasErrorStateView extends BadassView
 
     BadassView::constructor.apply @, arguments
 
+  ###
+  expects errors from the server to look like
+    {
+      data: {
+        fieldName: message
+      }
+    }
+  ###
   renderError: (model, resp, opts) =>
 
     if @logging then $log 'renderError', model, resp, opts
@@ -34,19 +42,19 @@ module.exports = class HasErrorStateView extends BadassView
       for own attr, value of errors.data
         if @logging then $log 'attr', attr, value #, input, input.val()
 
-        @tryRenderInputInvalid "[name=#{attr}]", value
+        @tryRenderInputInvalid attr, value
 
   delegate500Error: ->
 
     $log 'HasErrorStateView.delegate500 not implemented'
 
-  tryRenderInputInvalid: (selector, msg) ->
-    input = @$(selector)
+  tryRenderInputInvalid: (attr, msg) ->
+    input = @elm attr
 
     if input.length
       @renderInputInvalid input, msg
     else
-      $log "WARN: input not found for #{selector}"
+      $log "WARN: input not found for #{attr}. ERROR: #{JSON.stringify(msg)}"
 
 
   renderInputsValid: -> $log 'Subclass & renderInputsValid'
